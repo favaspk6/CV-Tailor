@@ -1,0 +1,18 @@
+name = "cv-tailor-proxy"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Your GitHub Pages origin: scheme + host only, no path, no trailing slash.
+# Comma-separate to also allow local testing, e.g.
+# "https://yourname.github.io,http://localhost:8000"
+ALLOWED_ORIGIN = "https://YOUR-GITHUB-USERNAME.github.io"
+
+# Optional: per-IP rate limit (5 requests per 60 seconds). Remove this block if
+# deployment complains about it; check Cloudflare's "Rate Limiting binding" docs.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+  [ratelimits.simple]
+  limit = 5
+  period = 60
